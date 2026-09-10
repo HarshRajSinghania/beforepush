@@ -3,7 +3,7 @@
 [![PyPI version](https://img.shields.io/pypi/v/before-push.svg)](https://pypi.org/project/before-push/)
 [![Python versions](https://img.shields.io/pypi/pyversions/before-push.svg)](https://pypi.org/project/before-push/)
 [![License](https://img.shields.io/github/license/alibro005/beforepush.svg)](https://github.com/alibro005/beforepush/blob/main/LICENSE)
-[![Tests](https://github.com/alibro005/beforepush/actions/workflows/tests.yml/badge.svg)](https://github.com/alibro005/beforepush/actions/workflows/tests.yml)
+[![Tests](https://github.com/alibro005/beforepush/actions/workflows/test.yml/badge.svg)](https://github.com/alibro005/beforepush/actions/workflows/test.yml)
 
 <p align="center">
   <img src="assets/beforepush.svg" alt="BeforePush logo" width="160">

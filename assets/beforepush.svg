@@ -1,0 +1,96 @@
+<svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#161b22"/>
+      <stop offset="100%" stop-color="#0d1117"/>
+    </linearGradient>
+
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3fb950"/>
+      <stop offset="100%" stop-color="#2ea043"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Badge background -->
+  <rect
+    x="4"
+    y="4"
+    width="232"
+    height="232"
+    rx="48"
+    fill="url(#bg)"
+    stroke="#30363d"
+    stroke-width="2"
+  />
+
+  <!-- Terminal prompt -->
+  <path
+    d="M 48 82 L 88 120 L 48 158"
+    fill="none"
+    stroke="#8b949e"
+    stroke-width="12"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Terminal cursor -->
+  <line
+    x1="98"
+    y1="158"
+    x2="136"
+    y2="158"
+    stroke="#8b949e"
+    stroke-width="12"
+    stroke-linecap="round"
+  />
+
+  <!-- Git branch -->
+  <circle
+    cx="176"
+    cy="68"
+    r="8"
+    fill="#3fb950"
+  />
+
+  <path
+    d="M 176 76 V 102"
+    stroke="url(#accent)"
+    stroke-width="6"
+    stroke-linecap="round"
+  />
+
+  <circle
+    cx="176"
+    cy="108"
+    r="8"
+    fill="#3fb950"
+  />
+
+  <!-- Gap between branch and check -->
+  <path
+    d="M 176 116 V 128"
+    stroke="url(#accent)"
+    stroke-width="6"
+    stroke-linecap="round"
+  />
+
+  <!-- Checkmark circle -->
+  <circle
+    cx="180"
+    cy="164"
+    r="30"
+    fill="#0d1117"
+    stroke="url(#accent)"
+    stroke-width="6"
+  />
+
+  <!-- Checkmark -->
+  <path
+    d="M 160 164 L 171 175 L 194 150"
+    fill="none"
+    stroke="url(#accent)"
+    stroke-width="9"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

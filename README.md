@@ -1,1 +1,103 @@
-## BeforePush
+# BeforePush
+
+[![PyPI version](https://img.shields.io/pypi/v/before-push.svg)](https://pypi.org/project/before-push/)
+[![Python versions](https://img.shields.io/pypi/pyversions/before-push.svg)](https://pypi.org/project/before-push/)
+[![License](https://img.shields.io/github/license/alibro005/beforepush.svg)](https://github.com/alibro005/beforepush/blob/main/LICENSE)
+[![Tests](https://github.com/alibro005/beforepush/actions/workflows/tests.yml/badge.svg)](https://github.com/alibro005/beforepush/actions/workflows/tests.yml)
+
+<p align="center">
+  <img src="assets/beforepush.svg" alt="BeforePush logo" width="160">
+</p>
+
+A lightweight CLI that checks whether your Git branch is ready before pushing or opening a pull request.
+
+## Features
+
+* Check if the current directory is a Git repository
+* Show the current branch
+* Detect uncommitted or untracked changes
+* Check upstream branch configuration
+* Check if the current branch is behind a target branch
+* Support custom target branches
+* Clean terminal output with Rich
+
+## Installation
+
+Install BeforePush from PyPI:
+
+```bash
+pip install before-push
+```
+
+## Usage
+
+Run BeforePush inside a Git repository:
+
+```bash
+beforepush
+```
+
+By default, BeforePush checks your current branch against `main`.
+
+You can specify a different target branch with `--target`:
+
+```bash
+beforepush --target develop
+```
+
+### Example
+
+![BeforePush example](assets/example.png)
+
+## Checks
+
+BeforePush performs the following checks:
+
+* **Git repository** — verifies that the current directory is a Git repository.
+* **Current branch** — shows the branch currently checked out.
+* **Working tree** — detects uncommitted or untracked changes.
+* **Upstream branch** — checks whether the current branch has an upstream branch configured.
+* **Target branch** — checks whether the current branch is behind the selected target branch.
+
+## Development
+
+Clone the repository:
+
+```bash
+git clone https://github.com/alibro005/beforepush.git
+cd beforepush
+```
+
+Install dependencies:
+
+```bash
+uv sync
+```
+
+Run the tests:
+
+```bash
+uv run pytest -v
+```
+
+Run the CLI locally:
+
+```bash
+uv run beforepush
+```
+
+Test against another target branch:
+
+```bash
+uv run beforepush --target develop
+```
+
+## Scope
+
+BeforePush focuses on local Git branch readiness.
+
+It does not create or merge pull requests, authenticate with GitHub, perform code reviews, manage remote repositories, or modify Git history.
+
+## License
+
+This project is licensed under the MIT License.

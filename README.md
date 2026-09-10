@@ -6,7 +6,7 @@
 [![Tests](https://github.com/alibro005/beforepush/actions/workflows/test.yml/badge.svg)](https://github.com/alibro005/beforepush/actions/workflows/test.yml)
 
 <p align="center">
-  <img src="assets/beforepush.svg" alt="BeforePush logo" width="160">
+  <img src="https://raw.githubusercontent.com/alibro005/beforepush/main/assets/beforepush.svg" alt="BeforePush logo" width="160">
 </p>
 
 A lightweight CLI that checks whether your Git branch is ready before pushing or opening a pull request.
@@ -47,17 +47,17 @@ beforepush --target develop
 
 ### Example
 
-![BeforePush example](assets/example.png)
+![BeforePush example](https://raw.githubusercontent.com/alibro005/beforepush/main/assets/example.png)
 
 ## Checks
 
 BeforePush performs the following checks:
 
-* **Git repository** — verifies that the current directory is a Git repository.
-* **Current branch** — shows the branch currently checked out.
-* **Working tree** — detects uncommitted or untracked changes.
-* **Upstream branch** — checks whether the current branch has an upstream branch configured.
-* **Target branch** — checks whether the current branch is behind the selected target branch.
+* **Git repository**: verifies that the current directory is a Git repository.
+* **Current branch**: shows the branch currently checked out.
+* **Working tree**: detects uncommitted or untracked changes.
+* **Upstream branch**: checks whether the current branch has an upstream branch configured.
+* **Target branch**: checks whether the current branch is behind the selected target branch.
 
 ## Development
 

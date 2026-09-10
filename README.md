@@ -1,8 +1,8 @@
 # BeforePush
 
 [![PyPI version](https://img.shields.io/pypi/v/before-push.svg)](https://pypi.org/project/before-push/)
-[![Python versions](https://img.shields.io/pypi/pyversions/before-push.svg)](https://pypi.org/project/before-push/)
-[![License](https://img.shields.io/github/license/alibro005/beforepush.svg)](https://github.com/alibro005/beforepush/blob/main/LICENSE)
+[![Python 3.13+](https://img.shields.io/badge/Python-3.13%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/alibro005/beforepush/blob/main/LICENSE)
 [![Tests](https://github.com/alibro005/beforepush/actions/workflows/test.yml/badge.svg)](https://github.com/alibro005/beforepush/actions/workflows/test.yml)
 
 <p align="center">

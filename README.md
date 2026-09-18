@@ -45,9 +45,10 @@ You can specify a different target branch with `--target`:
 beforepush --target develop
 ```
 
-### Example
 
-![BeforePush example](https://raw.githubusercontent.com/alibro005/beforepush/main/assets/example.png)
+## Demo
+
+![beforepush](https://raw.githubusercontent.com/alibro005/beforepush/main/assets/demo.gif)
 
 ## Contributing
 

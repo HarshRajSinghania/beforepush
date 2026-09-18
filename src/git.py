@@ -60,3 +60,13 @@ def get_behind_count(target: str) -> int:
     )
 
     return int(output)
+
+
+def branch_exists(name: str) -> bool:
+    """Return whether a Git ref that resolves to a commit exists."""
+    result = subprocess.run(
+        ["git", "rev-parse", "--verify", "--quiet", f"{name}^{{commit}}"],
+        capture_output=True,
+        text=True,
+    )
+    return result.returncode == 0

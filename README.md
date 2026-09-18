@@ -49,15 +49,6 @@ beforepush --target develop
 
 ![BeforePush example](https://raw.githubusercontent.com/alibro005/beforepush/main/assets/example.png)
 
-## Checks
-
-BeforePush performs the following checks:
-
-* **Git repository**: verifies that the current directory is a Git repository.
-* **Current branch**: shows the branch currently checked out.
-* **Working tree**: detects uncommitted or untracked changes.
-* **Upstream branch**: checks whether the current branch has an upstream branch configured.
-* **Target branch**: checks whether the current branch is behind the selected target branch.
 
 ## Development
 
@@ -91,6 +82,9 @@ Test against another target branch:
 ```bash
 uv run beforepush --target develop
 ```
+## Contributing
+
+Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, testing, and contribution guidelines.
 
 ## Scope
 

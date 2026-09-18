@@ -122,6 +122,11 @@ def test_target_branch_up_to_date(monkeypatch):
     )
     monkeypatch.setattr(
         git,
+        "branch_exists",
+        lambda target: True,
+    )
+    monkeypatch.setattr(
+        git,
         "get_behind_count",
         lambda target: 0,
     )
@@ -137,6 +142,11 @@ def test_target_branch_behind_one_commit(monkeypatch):
         git,
         "get_current_branch",
         lambda: "feature/test",
+    )
+    monkeypatch.setattr(
+        git,
+        "branch_exists",
+        lambda target: True,
     )
     monkeypatch.setattr(
         git,
@@ -158,6 +168,11 @@ def test_target_branch_behind_multiple_commits(monkeypatch):
     )
     monkeypatch.setattr(
         git,
+        "branch_exists",
+        lambda target: True,
+    )
+    monkeypatch.setattr(
+        git,
         "get_behind_count",
         lambda target: 3,
     )
@@ -166,3 +181,44 @@ def test_target_branch_behind_multiple_commits(monkeypatch):
 
     assert result.status == CheckStatus.FAIL
     assert "3 commits behind main" in result.message
+
+
+def test_target_branch_missing(monkeypatch):
+    monkeypatch.setattr(
+        git,
+        "get_current_branch",
+        lambda: "feature/test",
+    )
+    monkeypatch.setattr(
+        git,
+        "branch_exists",
+        lambda target: False,
+    )
+
+    result = check_target_branch("develop")
+
+    assert result.status == CheckStatus.FAIL
+    assert result.message == "Target branch 'develop' does not exist."
+
+
+def test_target_branch_compare_error_preserved(monkeypatch):
+    monkeypatch.setattr(
+        git,
+        "get_current_branch",
+        lambda: "feature/test",
+    )
+    monkeypatch.setattr(
+        git,
+        "branch_exists",
+        lambda target: True,
+    )
+
+    def raise_error(target):
+        raise RuntimeError("ambiguous argument")
+
+    monkeypatch.setattr(git, "get_behind_count", raise_error)
+
+    result = check_target_branch("main")
+
+    assert result.status == CheckStatus.FAIL
+    assert result.message == "Could not compare with 'main'."

@@ -120,3 +120,31 @@ def test_get_behind_count(monkeypatch):
     )
 
     assert git.get_behind_count("main") == 3
+
+
+def test_branch_exists_true(monkeypatch):
+    def fake_run(*args, **kwargs):
+        return subprocess.CompletedProcess(
+            args=["git", "rev-parse"],
+            returncode=0,
+            stdout="",
+            stderr="",
+        )
+
+    monkeypatch.setattr(subprocess, "run", fake_run)
+
+    assert git.branch_exists("main") is True
+
+
+def test_branch_exists_false(monkeypatch):
+    def fake_run(*args, **kwargs):
+        return subprocess.CompletedProcess(
+            args=["git", "rev-parse"],
+            returncode=1,
+            stdout="",
+            stderr="",
+        )
+
+    monkeypatch.setattr(subprocess, "run", fake_run)
+
+    assert git.branch_exists("develop") is False

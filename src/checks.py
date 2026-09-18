@@ -114,6 +114,13 @@ def check_target_branch(target: str) -> CheckResult:
                 message=f"Currently on target branch '{target}'.",
             )
 
+        if not git.branch_exists(target):
+            return CheckResult(
+                name="Target branch",
+                status=CheckStatus.FAIL,
+                message=f"Target branch '{target}' does not exist.",
+            )
+
         behind = git.get_behind_count(target)
 
     except RuntimeError:

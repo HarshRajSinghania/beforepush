@@ -49,39 +49,6 @@ beforepush --target develop
 
 ![BeforePush example](https://raw.githubusercontent.com/alibro005/beforepush/main/assets/example.png)
 
-
-## Development
-
-Clone the repository:
-
-```bash
-git clone https://github.com/alibro005/beforepush.git
-cd beforepush
-```
-
-Install dependencies:
-
-```bash
-uv sync
-```
-
-Run the tests:
-
-```bash
-uv run pytest -v
-```
-
-Run the CLI locally:
-
-```bash
-uv run beforepush
-```
-
-Test against another target branch:
-
-```bash
-uv run beforepush --target develop
-```
 ## Contributing
 
 Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, testing, and contribution guidelines.

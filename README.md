@@ -58,7 +58,7 @@ Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for developmen
 Thanks to everyone who contributes to BeforePush!  ❤️
 
 <a href="https://github.com/alibro005/beforepush/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=alibro005/beforepush" />
+  <img src="https://contrib.rocks/image?repo=alibro005/beforepush&v=2" />
 </a>
 
 ## Scope

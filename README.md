@@ -44,6 +44,12 @@ To specify a different target branch:
 beforepush --target develop
 ```
 
+To print extra diagnostic details without changing check behavior:
+
+```bash
+beforepush --verbose
+```
+
 For detailed installation, usage, and Git pre-push hook instructions, see the [documentation](https://alibro005.github.io/beforepush/).
 
 ## Demo

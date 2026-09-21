@@ -20,6 +20,24 @@ BeforePush checks:
 * Whether an upstream branch is configured
 * Whether your branch is behind the target branch
 
+## Verbose Diagnostics
+
+Use `--verbose` or `-v` when a check fails and you need more context. Default output stays concise.
+
+```bash
+beforepush --verbose
+beforepush -v
+```
+
+Verbose mode does not change which checks run or the exit code. It adds diagnostic details such as:
+
+* Repository path and current HEAD
+* Working-tree files from `git status --porcelain` when the tree is dirty
+* Remote and upstream information
+* The Git error that caused a check to fail
+
+For the pre-push hook, set `BEFOREPUSH_VERBOSE=1` before `git push` to enable the same diagnostics.
+
 ## Custom Target Branch
 
 The default target branch is `main`.
@@ -84,11 +102,3 @@ if [ $? -ne 0 ]; then
     echo "BeforePush checks failed."
 fi
 ```
-```powershell
-beforepush
-
-if ($LASTEXITCODE -ne 0) {
-    Write-Host "BeforePush checks failed."
-}
-```
-These exit codes allow scripts and Git hooks to detect when BeforePush finds a problem.

@@ -31,12 +31,12 @@ def print_header(target: str) -> None:
 def get_check_display(result: CheckResult) -> tuple[str, str]:
     """Return the symbol and style for a check result."""
     if result.status == CheckStatus.PASS:
-        return "\u2713", "green"
+        return "✓", "green"
 
     if result.status == CheckStatus.WARNING:
-        return "\u26a0", "yellow"
+        return "⚠", "yellow"
 
-    return "\u2717", "red"
+    return "✗", "red"
 
 
 def print_check(result: CheckResult, animate: bool = True) -> None:
@@ -65,12 +65,12 @@ def print_summary(
 
     warnings = sum(result.status == CheckStatus.WARNING for result in results)
 
-    console.print("  [dim]" + "\u2500" * 44 + "[/dim]")
+    console.print("  [dim]" + "─" * 44 + "[/dim]")
     console.print()
 
     if failed == 0 and warnings == 0:
         summary = Text()
-        summary.append("\u2713 READY\n", style="bold green")
+        summary.append("✓ READY\n", style="bold green")
         summary.append(
             "All checks passed. Safe to push.",
             style="green",
@@ -96,9 +96,9 @@ def print_summary(
             parts.append(f"{warnings} {word}")
 
         summary = Text()
-        summary.append("\u2717 NOT READY\n", style="bold red")
+        summary.append("✗ NOT READY\n", style="bold red")
         summary.append(
-            f"{' \u00b7 '.join(parts)}.",
+            f"{' · '.join(parts)}.",
             style="red",
         )
 

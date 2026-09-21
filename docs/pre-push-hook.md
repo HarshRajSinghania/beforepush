@@ -24,6 +24,12 @@ If BeforePush exits with a non-zero status because a check fails, the hook retur
 
 If all checks pass, the push continues normally.
 
+To run the hook with the same extra diagnostics as `beforepush --verbose`:
+
+```bash
+BEFOREPUSH_VERBOSE=1 git push
+```
+
 ## Install the Hook
 
 From inside a Git repository, run:

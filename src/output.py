@@ -31,12 +31,12 @@ def print_header(target: str) -> None:
 def get_check_display(result: CheckResult) -> tuple[str, str]:
     """Return the symbol and style for a check result."""
     if result.status == CheckStatus.PASS:
-        return "✓", "green"
+        return "\u2713", "green"
 
     if result.status == CheckStatus.WARNING:
-        return "⚠", "yellow"
+        return "\u26a0", "yellow"
 
-    return "✗", "red"
+    return "\u2717", "red"
 
 
 def print_check(result: CheckResult, animate: bool = True) -> None:
@@ -52,6 +52,8 @@ def print_check(result: CheckResult, animate: bool = True) -> None:
 
     console.print(f"  [{style}]{symbol}[/{style}]  [bold]{result.name}[/bold]")
     console.print(f"     [dim]{result.message}[/dim]")
+    for line in result.details:
+        console.print(f"     [dim]{line}[/dim]")
     console.print()
 
 
@@ -63,12 +65,12 @@ def print_summary(
 
     warnings = sum(result.status == CheckStatus.WARNING for result in results)
 
-    console.print("  [dim]" + "─" * 44 + "[/dim]")
+    console.print("  [dim]" + "\u2500" * 44 + "[/dim]")
     console.print()
 
     if failed == 0 and warnings == 0:
         summary = Text()
-        summary.append("✓ READY\n", style="bold green")
+        summary.append("\u2713 READY\n", style="bold green")
         summary.append(
             "All checks passed. Safe to push.",
             style="green",
@@ -94,9 +96,9 @@ def print_summary(
             parts.append(f"{warnings} {word}")
 
         summary = Text()
-        summary.append("✗ NOT READY\n", style="bold red")
+        summary.append("\u2717 NOT READY\n", style="bold red")
         summary.append(
-            f"{' · '.join(parts)}.",
+            f"{' \u00b7 '.join(parts)}.",
             style="red",
         )
 
@@ -129,9 +131,13 @@ def print_results(
 def display_results(
     results: list[CheckResult],
     target: str,
+    verbose: bool = False,
 ) -> None:
     """Display the complete check report."""
     print_header(target)
+    if verbose:
+        console.print("  [dim]Verbose diagnostics enabled[/dim]")
+        console.print()
 
     if console.is_terminal:
         with console.status(

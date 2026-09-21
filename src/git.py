@@ -5,7 +5,11 @@ BEFOREPUSH_HOOK_MARKER = "# Installed by BeforePush"
 
 BEFOREPUSH_HOOK_CONTENT = """#!/bin/sh
 # Installed by BeforePush
-beforepush
+if [ -n "$BEFOREPUSH_VERBOSE" ]; then
+  beforepush --verbose
+else
+  beforepush
+fi
 exit $?
 """
 
@@ -53,6 +57,21 @@ def get_hooks_dir() -> Path:
 def get_current_branch() -> str:
     """Get the current branch name."""
     return run_git_command("branch", "--show-current")
+
+
+def get_repo_root() -> str:
+    """Return the repository work-tree root."""
+    return run_git_command("rev-parse", "--show-toplevel")
+
+
+def get_head_sha() -> str:
+    """Return the current HEAD commit SHA."""
+    return run_git_command("rev-parse", "HEAD")
+
+
+def get_remote_summary() -> str:
+    """Return configured remotes, or an empty string if none exist."""
+    return run_git_command("remote", "-v")
 
 
 def get_status() -> str:
@@ -122,7 +141,6 @@ def install_pre_push_hook() -> str:
 
     hook_path.write_text(BEFOREPUSH_HOOK_CONTENT, encoding="utf-8")
 
-    # Make the hook executable without changing unrelated permission bits.
     hook_path.chmod(hook_path.stat().st_mode | 0o111)
 
     return f"BeforePush pre-push hook installed at {hook_path}."

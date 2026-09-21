@@ -31,6 +31,13 @@ def main() -> int:
         version=f"beforepush {version('before-push')}",
     )
 
+    parser.add_argument(
+        "-v",
+        "--verbose",
+        action="store_true",
+        help="Show extra diagnostic details for each check.",
+    )
+
     args = parser.parse_args()
 
     if args.command == "install-hook":
@@ -51,8 +58,8 @@ def main() -> int:
 
         return 0
 
-    results = run_checks(args.target)
-    display_results(results, args.target)
+    results = run_checks(args.target, verbose=args.verbose)
+    display_results(results, args.target, verbose=args.verbose)
 
     return int(any(result.status == CheckStatus.FAIL for result in results))
 

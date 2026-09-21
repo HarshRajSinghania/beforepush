@@ -10,11 +10,11 @@ from checks import CheckResult, CheckStatus
 def test_cli_uses_main_by_default(monkeypatch):
     captured = {}
 
-    def fake_run_checks(target):
+    def fake_run_checks(target, **kwargs):
         captured["target"] = target
         return []
 
-    def fake_display_results(results, target):
+    def fake_display_results(results, target, **kwargs):
         captured["results"] = results
         captured["display_target"] = target
 
@@ -37,11 +37,11 @@ def test_cli_uses_main_by_default(monkeypatch):
 def test_cli_accepts_custom_target(monkeypatch):
     captured = {}
 
-    def fake_run_checks(target):
+    def fake_run_checks(target, **kwargs):
         captured["target"] = target
         return []
 
-    def fake_display_results(results, target):
+    def fake_display_results(results, target, **kwargs):
         captured["display_target"] = target
 
     monkeypatch.setattr(cli, "run_checks", fake_run_checks)
@@ -117,11 +117,11 @@ def test_cli_returns_zero_when_checks_pass(monkeypatch):
     monkeypatch.setattr(
         cli,
         "run_checks",
-        lambda target: [
+        lambda target, **kwargs: [
             CheckResult("Example", CheckStatus.PASS, "Passed."),
         ],
     )
-    monkeypatch.setattr(cli, "display_results", lambda results, target: None)
+    monkeypatch.setattr(cli, "display_results", lambda results, target, **kwargs: None)
     monkeypatch.setattr("sys.argv", ["beforepush"])
 
     assert cli.main() == 0
@@ -131,11 +131,11 @@ def test_cli_returns_zero_when_checks_only_warn(monkeypatch):
     monkeypatch.setattr(
         cli,
         "run_checks",
-        lambda target: [
+        lambda target, **kwargs: [
             CheckResult("Example", CheckStatus.WARNING, "Warning."),
         ],
     )
-    monkeypatch.setattr(cli, "display_results", lambda results, target: None)
+    monkeypatch.setattr(cli, "display_results", lambda results, target, **kwargs: None)
     monkeypatch.setattr("sys.argv", ["beforepush"])
 
     assert cli.main() == 0
@@ -145,11 +145,11 @@ def test_cli_returns_nonzero_when_check_fails(monkeypatch):
     monkeypatch.setattr(
         cli,
         "run_checks",
-        lambda target: [
+        lambda target, **kwargs: [
             CheckResult("Example", CheckStatus.FAIL, "Failed."),
         ],
     )
-    monkeypatch.setattr(cli, "display_results", lambda results, target: None)
+    monkeypatch.setattr(cli, "display_results", lambda results, target, **kwargs: None)
     monkeypatch.setattr("sys.argv", ["beforepush"])
 
     assert cli.main() == 1
